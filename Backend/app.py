@@ -270,24 +270,30 @@ for item in dh:
 @cross_origin(supports_credentials=True) 
 def update_data():  # input parameter(s)
     if request.method == 'POST':
-       data = request.get_json()
-       n = data['clicks']
-       val = data['symbol']
+        try:
+            data = request.get_json()
+            n = data['clicks']
+            val = data['symbol']
+            length = len(val)
+            val = val[:length-2] + 'N' + val[(length - 2)+1:]
+            val = val[:length-1] + 'S' + val[(length - 1)+1:]
 
-    if n == None:
-        return [""]
-        # raise PreventUpdate
-    else:
-        if val == None:
-            raise PreventUpdate
-        else:
-            ticker = yf.Ticker(val)
-            inf = ticker.info
-            df = pd.DataFrame().from_dict(inf, orient="index").T
-            df[[ 'shortName', 'longBusinessSummary']]
-            lbs = df['longBusinessSummary'].values[0]
-            sn = df['shortName'].values[0]
-            return [lbs,sn]
+            if n == None:
+                return [""]
+                # raise PreventUpdate
+            else:
+                if val == None:
+                    raise PreventUpdate
+                else:
+                    ticker = yf.Ticker(val)
+                    inf = ticker.info
+                    df = pd.DataFrame().from_dict(inf, orient="index").T
+                    df[[ 'shortName', 'longBusinessSummary']]
+                    lbs = df['longBusinessSummary'].values[0]
+                    sn = df['shortName'].values[0]
+                    return [lbs,sn],200
+        except:
+            return {"success":False},400    
 
 
 # Route for stocks graphs
@@ -295,28 +301,30 @@ def update_data():  # input parameter(s)
 @cross_origin(supports_credentials=True) 
 def stock_price(): 
     if request.method == 'POST':
-       data = request.get_json()
-       n = data['clicks']
-       start_date = data['dates'][0]
-       end_date = data['dates'][1]
-       val = data['symbol']
+        try:   
+            data = request.get_json()
+            n = data['clicks']
+            start_date = data['dates'][0]
+            end_date = data['dates'][1]
+            val = data['symbol']
 
-    if n == None:
-        return [""]
-        #raise PreventUpdate
-    if val == None:
-        raise PreventUpdate
-    else:
-        if start_date != None:
-            df = yf.download(val, str(start_date), str(end_date))
-        else:
-            df = yf.download(val)
+            if n == None:
+                return [""]
+                #raise PreventUpdate
+            if val == None:
+                raise PreventUpdate
+            else:
+                if start_date != None:
+                    df = yf.download(val, str(start_date), str(end_date))
+                else:
+                    df = yf.download(val)
 
-    df.reset_index(inplace=True)
-    fig = get_stock_price_fig(df)
-    gph_json = pio.to_json(fig)
-    
-    return gph_json
+            df.reset_index(inplace=True)
+            fig = get_stock_price_fig(df)
+            gph_json = pio.to_json(fig)
+            return gph_json,200
+        except:
+            return {"success":False},400
 
         
 
@@ -325,48 +333,53 @@ def stock_price():
 @cross_origin(supports_credentials=True) 
 def indicators():
     if request.method == 'POST':
-       data = request.get_json()
-       n = data['clicks']
-       start_date = data['dates'][0]
-       end_date = data['dates'][1]
-       val = data['symbol']
+        try:
+            data = request.get_json()
+            n = data['clicks']
+            start_date = data['dates'][0]
+            end_date = data['dates'][1]
+            val = data['symbol']
 
-    if n == None:
-        return [""]
-    if val == None:
-        return [""]
+            if n == None:
+                return [""]
+            if val == None:
+                return [""]
 
-    if start_date == None:
-        df_more = yf.download(val)
-    else:
-        df_more = yf.download(val, str(start_date), str(end_date))
+            if start_date == None:
+                df_more = yf.download(val)
+            else:
+                df_more = yf.download(val, str(start_date), str(end_date))
 
-    df_more.reset_index(inplace=True)
-    fig = get_more(df_more)
-    gph_json = pio.to_json(fig)
-    
-    return gph_json
+            df_more.reset_index(inplace=True)
+            fig = get_more(df_more)
+            gph_json = pio.to_json(fig)
+            
+            return gph_json,200
+        except:
+            return {"success":False},400
 
 # Route for Nifty,Sensex graph
 @server.route('/nsgraph',methods = ['GET','POST'])
 @cross_origin(supports_credentials=True) 
 def Nifty_Sensex():
-    
-    data = request.get_json()
-    val = data['symbol']
+    try: 
+        data = request.get_json()
+        val = data['symbol']
 
-    if val == None:
-        return [""]
+        if val == None:
+            return [""]
 
-    try:
-        df_more = yf.download(val, period='1d', interval='1m')
+        try:
+            df_more = yf.download(val, period='1d', interval='1m')
+        except:
+            return {"success":False},400
+
+        df_more.reset_index(inplace=True)
+        fig = get_Nifty_Sensex_fig(df_more)
+        gph_json = pio.to_json(fig)
+        return gph_json,200
     except:
         return {"success":False},400
-
-    df_more.reset_index(inplace=True)
-    fig = get_Nifty_Sensex_fig(df_more)
-    gph_json = pio.to_json(fig)
-    return gph_json
     
 
 # Route for forecast graph
@@ -374,19 +387,22 @@ def Nifty_Sensex():
 @cross_origin(supports_credentials=True) 
 def forecast():
     if request.method == 'POST':
-       data = request.get_json()
-       n = data['clicks']
-       n_days = data['ndays']
-       val = data['symbol']
+        try:
+            data = request.get_json()
+            n = data['clicks']
+            n_days = data['ndays']
+            val = data['symbol']
 
-    if n == None:
-        return [""]
-    if val == None:
-        raise PreventUpdate
-    fig = prediction(val, int(n_days) + 1)
-    gph_json = pio.to_json(fig)
-    
-    return gph_json
+            if n == None:
+                return [""]
+            if val == None:
+                raise PreventUpdate
+            fig = prediction(val, int(n_days) + 1)
+            gph_json = pio.to_json(fig)
+            
+            return gph_json,200
+        except:
+            return {"success":False},400
 
 # Route for top gainers losers NSE/BSE 
 @server.route("/gainlose",methods = ["POST","GET"])

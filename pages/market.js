@@ -118,16 +118,16 @@ const Market = ({ GL_data }) => {
                             {market === "NSE" && top === "Gainers" && GL_data.nse_top_gainers.map((item, index) => {
                                 return <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-gray-600">
 
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <th scope="row" className="text-blue-500 px-6 py-4 font-medium whitespace-nowrap dark:text-white">
                                         {item}
                                     </th>
                                     <td className="px-6 py-4">
                                         {GL_data.ntg_ltp[index]}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 text-green-500">
                                         {GL_data.ntg_change[index]}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 text-green-500">
                                         {GL_data.ntg_change_percent[index]}
                                     </td>
                                     <td className="px-6 py-4">
@@ -145,16 +145,16 @@ const Market = ({ GL_data }) => {
                             {market === "NSE" && top === "Losers" && GL_data.nse_top_losers.map((item, index) => {
                                 return <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-gray-600">
 
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <th scope="row" className="px-6 py-4 font-medium text-blue-500 whitespace-nowrap dark:text-white">
                                         {item}
                                     </th>
                                     <td className="px-6 py-4">
                                         {GL_data.ntl_ltp[index]}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 text-red-500">
                                         {GL_data.ntl_change[index]}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 text-red-500">
                                         {GL_data.ntl_change_percent[index]}
                                     </td>
                                     <td className="px-6 py-4">
@@ -172,16 +172,16 @@ const Market = ({ GL_data }) => {
                             {market === "BSE" && top === "Gainers" && GL_data.bse_top_gainers.map((item, index) => {
                                 return <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-gray-600">
 
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <th scope="row" className="px-6 py-4 font-medium text-blue-500 whitespace-nowrap dark:text-white">
                                         {item}
                                     </th>
                                     <td className="px-6 py-4">
                                         {GL_data.btg_ltp[index]}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 text-green-500">
                                         {GL_data.btg_change[index]}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 text-green-500">
                                         {GL_data.btg_change_percent[index]}
                                     </td>
                                     <td className="px-6 py-4">
@@ -199,16 +199,16 @@ const Market = ({ GL_data }) => {
                             {market === "BSE" && top === "Losers" && GL_data.bse_top_losers.map((item, index) => {
                                 return <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-gray-600">
 
-                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <th scope="row" className="px-6 py-4 font-medium text-blue-500 whitespace-nowrap dark:text-white">
                                         {item}
                                     </th>
                                     <td className="px-6 py-4">
                                         {GL_data.btl_ltp[index]}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 text-red-500">
                                         {GL_data.btl_change[index]}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 text-red-500">
                                         {GL_data.btl_change_percent[index]}
                                     </td>
                                     <td className="px-6 py-4">
