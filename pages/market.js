@@ -52,7 +52,7 @@ const Market = ({ GL_data }) => {
     return (
         <div className="min-h-screen">
             <div>
-                <div className='pl-6 py-6 bg-white  rounded-3xl w-[85rem] mb-4 mt-8 ml-16'>
+                <div className='pl-6 py-6 bg-white  rounded-3xl md:w-[85rem] mb-4 mt-8 md:ml-16 overflow-x-auto relative mx-6'>
 
                     <div className='relative w-24 mb-2'>
                         <select disabled={dis === true} onChange={(e) => { setmarket(e.target.value) }} className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 text-base pl-3 max-w-[21rem] w-20 md:mr-0 mr-4 ml-8 md:ml-0">

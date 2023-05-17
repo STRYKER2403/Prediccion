@@ -1,38 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Prediccion
 
-First, run the development server:
+Prediccion is an advanced platform designed to help individuals increase their productivity and profitability. Through this platform, they are able to access essential information and services related to particular company’s stock. It provides them with the tools they need to make informed decisions regarding their investing operations. 
+
+The stock monitoring website is a platform designed to cater to a wide range of users, including individual investors, financial professionals, and traders. The website's primary objective is to provide a user-friendly interface that allows users to access real-time stock market data, track their portfolios, and analyze stock performance.
+
+Prediccion also offers an analysis section that gives information about the latest happenings in the field of stocks.
+
+
+
+## Installation
+
+Clone the git repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  git clone https://github.com/STRYKER2403/Prediccion.git
+  cd Prediccion
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install necessary dependencies:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+  yarn add dependencies or yarn install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Run development server:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+  yarn both
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage
 
-## Learn More
+1. Upon server start Home page (Landing Page) is reached.
 
-To learn more about Next.js, take a look at the following resources:
+2. From the Home page , navigation to Three sections is possible:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Market - Access NSE and BSE index with top Gainers and Losers of respective Market.
+- Analysis - get stock price Graph , Exponential Moving Average and Forecast for specified duration.
+- Contact Us - contact section.    
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Screenshots
 
-## Deploy on Vercel
+![Screenshot 2023-05-17 225342](https://github.com/STRYKER2403/samplee/assets/75637474/98690f78-6300-4e18-8dbe-1679bce1d750)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Screenshot 2023-05-17 225429](https://github.com/STRYKER2403/samplee/assets/75637474/22f19230-6be6-4d71-be8d-23128b52143c)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Screenshot 2023-05-17 225217](https://github.com/STRYKER2403/samplee/assets/75637474/18edfefa-8966-418a-a6d8-d99b180bf5db)
+
+
+![Screenshot 2023-05-17 225258](https://github.com/STRYKER2403/samplee/assets/75637474/86517660-fcb9-41d9-a639-fb0d5b284f7d)
+
+![Screenshot 2023-05-17 224911](https://github.com/STRYKER2403/samplee/assets/75637474/67a108f8-9a19-46fb-a4a0-15792b218c27)
+
+![Screenshot 2023-05-17 225009](https://github.com/STRYKER2403/samplee/assets/75637474/5cb0ed4b-dbd3-4edb-8291-5204a8839122)
+
+![Screenshot 2023-05-17 225055](https://github.com/STRYKER2403/samplee/assets/75637474/96e28045-82a6-4748-93e3-f413363c0c30)
+
+![Screenshot 2023-05-17 225124](https://github.com/STRYKER2403/samplee/assets/75637474/20e9c386-0520-484b-80a9-500d79c281cf)
+
+
+![Screenshot 2023-05-17 224529](https://github.com/STRYKER2403/samplee/assets/75637474/e6bf0ff5-e063-47b7-963c-cfa6fb2eca2d)

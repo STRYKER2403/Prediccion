@@ -1,8 +1,6 @@
 import Head from 'next/head'
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-
-// import EqualizerIcon from '@mui/icons-material/Equalizer';
 import Link from 'next/link';
 
 

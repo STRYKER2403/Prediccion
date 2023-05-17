@@ -60,7 +60,7 @@ def prediction(stock, n_days):
     # Support Vector Regression Models
 
     # RBF model
-    #rbf_svr = SVR(kernel='rbf', C=1000.0, gamma=4.0)
+    
     rbf_svr = best_svr
 
     rbf_svr.fit(x_train, y_train)
@@ -76,21 +76,10 @@ def prediction(stock, n_days):
         dates.append(current)
 
     # plot Results
-    # fig = go.Figure()
-    # fig.add_trace(
-    #     go.Scatter(x=np.array(x_test).flatten(),
-    #                y=y_test.values.flatten(),
-    #                mode='markers',
-    #                name='data'))
-    # fig.add_trace(
-    #     go.Scatter(x=np.array(x_test).flatten(),
-    #                y=rbf_svr.predict(x_test),
-    #                mode='lines+markers',
-    #                name='test'))
     fig = go.Figure()
     fig.add_trace(
         go.Scatter(
-            x=dates,  # np.array(ten_days).flatten(), 
+            x=dates,  
             y=rbf_svr.predict(output_days),
             mode='lines+markers',
             name='data'))
@@ -98,7 +87,6 @@ def prediction(stock, n_days):
         title="Predicted Close Price of next " + str(n_days - 1) + " days",
         xaxis_title="Date",
         yaxis_title="Closed Price",
-        # legend_title="Legend Title",
     )
 
     return fig

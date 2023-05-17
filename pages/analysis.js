@@ -6,7 +6,7 @@ import moment from 'moment'
 import dayjs from 'dayjs';
 import { BsSearch } from 'react-icons/bs';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';     
+import 'react-toastify/dist/ReactToastify.css';
 const Plot = dynamic(() => import('react-plotly.js'), { ssr: false });
 const fs = require('fs');
 
@@ -51,8 +51,7 @@ const Analysis = ({ MyStock }) => {
     })
 
     let response = await res.json();
-    if(res.status == 400)
-    {
+    if (res.status == 400) {
       toast.error('Info Not Available!', {
         position: "top-left",
         autoClose: 1000,
@@ -64,11 +63,10 @@ const Analysis = ({ MyStock }) => {
         theme: "light",
       });
     }
-    else
-    {
+    else {
       setcinfo(response)
     }
-    
+
     console.log(response)
   }
 
@@ -85,10 +83,10 @@ const Analysis = ({ MyStock }) => {
     })
 
     let response = await res.json();
-    
-    
-    if (res.status === 400 || (Object.keys({...response.data}).length) === 0) {
-      
+
+
+    if (res.status === 400 || (Object.keys({ ...response.data }).length) === 0) {
+
       toast.error('Graph not available, Symbol may be delisted!', {
         position: "top-left",
         autoClose: 1000,
@@ -99,14 +97,13 @@ const Analysis = ({ MyStock }) => {
         progress: undefined,
         theme: "light",
       });
-      
+
     }
-    else
-    {
+    else {
       response = { ...response.data }
       setsgraph(response)
     }
-    
+
     console.log(Object.keys(response).length)
   }
 
@@ -126,7 +123,7 @@ const Analysis = ({ MyStock }) => {
     response = { ...response.data }
 
     if (res.status == 400 || (response[0].x.length) === 0) {
-      
+
       toast.error('Graph not available, Symbol may be delisted!', {
         position: "top-left",
         autoClose: 1000,
@@ -137,14 +134,13 @@ const Analysis = ({ MyStock }) => {
         progress: undefined,
         theme: "light",
       });
-      
+
     }
-    else
-    {
-      
+    else {
+
       setigraph(response)
     }
-    
+
     console.log(response[0].x.length)
   }
 
@@ -161,8 +157,8 @@ const Analysis = ({ MyStock }) => {
     })
 
     let response = await res.json();
-    if (res.status == 400 || (Object.keys({...response.data}).length) === 0) {
-      
+    if (res.status == 400 || (Object.keys({ ...response.data }).length) === 0) {
+
       toast.error('Graph not available, Symbol may be delisted!', {
         position: "top-left",
         autoClose: 1000,
@@ -173,14 +169,13 @@ const Analysis = ({ MyStock }) => {
         progress: undefined,
         theme: "light",
       });
-      
+
     }
-    else
-    {
+    else {
       response = { ...response.data }
       setfgraph(response)
     }
-    
+
     console.log(response)
   }
 
@@ -209,8 +204,8 @@ const Analysis = ({ MyStock }) => {
 
         <div className='flex space-x-8 md:flex-row flex-col mt-8'>
           <div className="relative ">
-            {/* <span className="ml-8 md:ml-0 md:mr-3">Stock:</span> */}
-            <div className='flex flex-row rounded border appearance-none border-gray-300 py-2 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-200 focus-within:border-blue-500 text-base pl-3 max-w-[21rem] w-[20.5rem] md:mr-0 mr-4 ml-8 md:ml-0 bg-white justify-between'>
+
+            <div className='flex flex-row rounded border appearance-none border-gray-300 py-2 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-200 focus-within:border-blue-500 text-base pl-3 max-w-[21rem] w-[20.5rem] md:mr-0 mr-4 ml-3 md:ml-0 bg-white justify-between'>
               <input value={name} onChange={onChange} name='stock' className="border-none text-inherit bg-transparent outline-none w-[17rem]" placeholder='Search Market...'>
               </input>
               <BsSearch className='mr-2 mt-1 border-l-2 ml-3 w-10'></BsSearch>
@@ -222,8 +217,8 @@ const Analysis = ({ MyStock }) => {
                 const stockName = item["NAME OF COMPANY"].toUpperCase()
 
                 return searchTerm && stockName.startsWith(searchTerm) && stockName !== searchTerm
-              }).slice(0, 10)   //for limiting search results
-                .map((item, index) => { //put value as stock symbol and end to backend to ml model using use state hook
+              }).slice(0, 10)
+                .map((item, index) => {
                   return <div key={index} onClick={() => { onSearch(item) }} className='p-2 dropdown-row cursor-pointer border  hover:text-blue-600'>{item["NAME OF COMPANY"]} </div>
                 })}
 
@@ -232,12 +227,13 @@ const Analysis = ({ MyStock }) => {
 
           </div>
 
-          <div className="relative ">
-            <Space className='ml-20' direction="vertical" size={12}>
-              <RangePicker disabledDate={disabledDate} className='p-2.5' onChange={(values) => {values?
-                setdates(values.map(item => {
-                  return moment(item)._i.format("YYYY-MM-DD")
-                })):setdates()
+          <div className="relative">
+            <Space className='md:ml-20' direction="vertical" size={12}>
+              <RangePicker disabledDate={disabledDate} className='p-2.5' onChange={(values) => {
+                values ?
+                  setdates(values.map(item => {
+                    return moment(item)._i.format("YYYY-MM-DD")
+                  })) : setdates()
               }} />
             </Space>
           </div>
@@ -254,28 +250,13 @@ const Analysis = ({ MyStock }) => {
           <div className='flex justify-end'>
             <button onClick={handleIndicators} disabled={!symbol || !dates} className="disabled:bg-blue-300 flex md:ml-20 text-white bg-blue-500 border-0 py-2 px-36 md:px-6 focus:outline-none hover:bg-blue-600 rounded justify-center mt-2">Indicator</button>
           </div>
-
         </div>
-
       </div>
 
       <div className="flex items-center md:justify-center flex-col md:flex-row space-y-6 mx-12 mt-4">
-
-        {/* <div className='flex space-x-8 md:flex-row flex-col mt-6'>
-          <div className="relative "> */}
-            {/* <div className='flex justify-end'>
-              <button onClick={handleStock} className="disabled:bg-blue-300 flex md:ml-8 text-white bg-blue-500 border-0 py-2 px-36 md:px-6 focus:outline-none hover:bg-blue-600 rounded justify-center">Stock Price</button>
-            </div> */}
-
-          {/* </div>
-
-
-
-        </div> */}
-
         <div className="relative">
-          {/* <span className="md:mr-3">Number of Days:</span> */}
-          <input value={ndays} onChange={onChange} name='n_days' className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 text-base pl-3 max-w-[21rem] w-[20.5rem] mr-4 mt-6" placeholder='Number of Days...'>
+
+          <input value={ndays} onChange={onChange} name='n_days' className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 text-base pl-3 max-w-[21rem] w-[20.5rem] md:mr-4 mt-6" placeholder='Number of Days...'>
           </input>
         </div>
 
@@ -284,21 +265,21 @@ const Analysis = ({ MyStock }) => {
         </div>
       </div>
 
-      {cinfo && <div className='ml-16 mt-8 pl-6 py-6 bg-white  rounded-3xl w-[85rem] drop-shadow-lg'>
+      {cinfo && <div className='md:ml-16 mt-8 pl-6 py-6 mx-6 bg-white  rounded-3xl md:w-[85rem] drop-shadow-lg overflow-x-auto relative'>
         <div className='my-4 text-4xl'>{cinfo[1]}</div>
         <div className='my-4 pr-3'>{cinfo[0]}</div>
       </div>}
 
-      <div className='ml-16'>
-        {sgraph && <div className='pl-6 py-6 bg-white  rounded-3xl w-[85rem] drop-shadow-lg my-4'>
+      <div className='md:ml-16 mx-6'>
+        {sgraph && <div className='pl-6 py-6 bg-white  rounded-3xl md:w-[85rem] drop-shadow-lg my-4 overflow-x-auto relative'>
           <Plot className='drop-shadow-lg' data={Object.values(sgraph)} layout={{ width: 1300, title: 'Stock Price' }} />
         </div>}
 
-        {igraph && <div className='pl-6 py-6 bg-white  rounded-3xl w-[85rem] mb-4 drop-shadow-lg'>
+        {igraph && <div className='pl-6 py-6 bg-white  rounded-3xl md:w-[85rem] mb-4 drop-shadow-lg overflow-x-auto relative'>
           <Plot className='drop-shadow-lg' data={Object.values(igraph)} layout={{ width: 1300, title: 'Exponential Moving Average' }} />
         </div>}
 
-        {fgraph && <div className='pl-6 py-6 bg-white  rounded-3xl w-[85rem] drop-shadow-lg mb-8'>
+        {fgraph && <div className='pl-6 py-6 bg-white  rounded-3xl md:w-[85rem] drop-shadow-lg mb-8 overflow-x-auto relative'>
           <Plot className='drop-shadow-lg' data={Object.values(fgraph)} layout={{ width: 1300, title: 'Forecast' }} />
         </div>}
       </div>

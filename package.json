@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "both": "concurrently \"py Backend/app.py\" \"yarn dev\""
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
@@ -15,6 +16,7 @@
     "@mui/material": "^5.12.3",
     "antd": "^5.4.5",
     "autoprefixer": "10.4.14",
+    "concurrently": "^8.0.1",
     "eslint": "^8.38.0",
     "eslint-config-next": "13.3.0",
     "moment": "^2.29.4",

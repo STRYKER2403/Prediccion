@@ -7,8 +7,7 @@ import plotly.express as px
 # model
 from model import prediction
 from sklearn.svm import SVR
-from flask import Flask,request,jsonify
-import json
+from flask import Flask,request
 import plotly.io as pio
 from flask_cors import CORS, cross_origin
 import requests
