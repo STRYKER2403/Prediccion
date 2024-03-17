@@ -17,7 +17,7 @@ export default function Home() {
         <section className="text-gray-600 body-font ">
 
           <div className="flex bg-back bg-no-repeat bg-cover bg-center bg-fixed h-[80vh] opacity-90 text-center items-center justify-center flex-col">
-            <div className='md:text-6xl text-3xl text-white font-semibold font-serif '>PREDICCION</div>
+            <div className='md:text-6xl text-3xl text-white font-semibold font-serif '>Prediccion</div>
             <div className='md:text-4xl text-2xl mb-28 text-white font-semibold font-serif'>Be Technical</div>
           </div>
         </section>
