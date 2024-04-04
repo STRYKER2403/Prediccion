@@ -6,8 +6,7 @@ const connectDb = handler => async (req,res) =>{
         return handler(req,res)
     }
 
-    await mongoose.connect("mongodb://localhost:27017/prediccion");
-    
+    await mongoose.connect(process.env.MONGO_URI);  
     return handler(req,res);
 }
 

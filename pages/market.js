@@ -20,8 +20,8 @@ const Market = ({ GL_data }) => {
             if (market === "BSE") {
                 data = { symbol: "^BSESN" };
             }
-
-            let res = await fetch(`http://127.0.0.1:5000/nsgraph`, {
+            // console.log(`${process.env.NEXT_PUBLIC_PYTHON_HOST}`)
+            let res = await fetch(`${process.env.NEXT_PUBLIC_PYTHON_HOST}/nsgraph`, {
                 method: 'POST', // or 'PUT' 
                 headers: {
                     'Content-Type': 'application/json',
@@ -238,7 +238,7 @@ const Market = ({ GL_data }) => {
 
 export async function getServerSideProps(context) {
 
-    let res = await fetch("http://127.0.0.1:5000/gainlose")
+    let res = await fetch(`${process.env.NEXT_PUBLIC_PYTHON_HOST}/gainlose`)
 
     let GL_data = await res.text()
 

@@ -42,7 +42,7 @@ const Analysis = ({ MyStock }) => {
   const handlecinfo = async (e) => {
     // e.preventDefault();
     const data = { clicks, symbol }
-    let res = await fetch(`http://127.0.0.1:5000/cinfo`, {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_PYTHON_HOST}/cinfo`, {
       method: 'POST', // or 'PUT' 
       headers: {
         'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ const Analysis = ({ MyStock }) => {
     // e.preventDefault();
     const data = { clicks, dates, symbol }
 
-    let res = await fetch(`http://127.0.0.1:5000/stockgraph`, {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_PYTHON_HOST}/stockgraph`, {
       method: 'POST', // or 'PUT' 
       headers: {
         'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ const Analysis = ({ MyStock }) => {
     e.preventDefault();
     const data = { clicks, dates, symbol }
 
-    let res = await fetch(`http://127.0.0.1:5000/indicatorsgraph`, {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_PYTHON_HOST}/indicatorsgraph`, {
       method: 'POST', // or 'PUT' 
       headers: {
         'Content-Type': 'application/json',
@@ -147,8 +147,8 @@ const Analysis = ({ MyStock }) => {
   const handleForecast = async (e) => {
     e.preventDefault();
     const data = { clicks, ndays, symbol }
-
-    let res = await fetch(`http://127.0.0.1:5000/forecastgraph`, {
+    // console.log(symbol)
+    let res = await fetch(`${process.env.NEXT_PUBLIC_PYTHON_HOST}/forecastgraph`, {
       method: 'POST', // or 'PUT' 
       headers: {
         'Content-Type': 'application/json',

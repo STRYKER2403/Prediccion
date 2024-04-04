@@ -14,7 +14,7 @@ const contactus = () => {
 
     const data = credentials
 
-    let a = await fetch("http://localhost:3000/api/contact", {
+    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/contact`, {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
