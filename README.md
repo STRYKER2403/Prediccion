@@ -1,5 +1,5 @@
 
-# Prediccion
+# [Prediccion](https://prediccion-e7e0.onrender.com)
 
 Prediccion is an advanced platform designed to help individuals increase their productivity and profitability. Through this platform, they are able to access essential information and services related to particular company’s stock. It provides them with the tools they need to make informed decisions regarding their investing operations. 
 
@@ -24,6 +24,21 @@ Install necessary dependencies:
 
 ```bash
   yarn add dependencies or yarn install
+```
+
+Clone Prediccion_python_backend:
+
+```bash
+  git https://github.com/STRYKER2403/Prediccion_python_backend.git
+  cd Prediccion_python_backend
+  pip install -r requirements.txt
+```
+Create an .env file and add the following variables:
+
+```bash
+  MONGO_URI = mongodb://localhost:27017/prediccion
+  NEXT_PUBLIC_HOST = http://localhost:3000
+  NEXT_PUBLIC_PYTHON_HOST = http://localhost:3001
 ```
 
 Run development server:
