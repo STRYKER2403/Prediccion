@@ -1,5 +1,5 @@
 
-# [Prediccion](https://prediccion-e7e0.onrender.com)
+# [Prediccion](https://prediccion.tech/)
 
 Prediccion is an advanced platform designed to help individuals increase their productivity and profitability. Through this platform, they are able to access essential information and services related to particular company’s stock. It provides them with the tools they need to make informed decisions regarding their investing operations. 
 
